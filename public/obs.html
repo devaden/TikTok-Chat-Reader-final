@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS Overlay</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            min-width: 200px !important;
+            width: 100%;
+        }
+
+        .usernamelink {
+            color: #101928!important;
+        }
+
+        .static {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #bbaed350;
+            border: #c7c7c7;
+        }
+
+        .static > span {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: .7rem;
+
+        }
+
+        .static > span > span{
+            font-weight: 900;
+            font-size: .9rem;
+
+        }
+
+        .miniprofilepicture {
+            width: 30px;
+            height: 30px;
+            border-radius: 900px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+
+        .eventcontainer > div {
+            margin-top: 5px;
+        }
+
+        .loading-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            height: 100px;
+        }
+
+        .status {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            font-size: 3vw;
+        }
+
+        .status div {
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            color: #fff;
+            background-color: #573292;
+            width: 100%;
+            padding: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        console.log("location",location.search)
+        window.settings = Object.fromEntries(new URLSearchParams(location.search));
+
+        window.addEventListener('load', () => {
+            if (window.settings.fontColor) {
+                $('body').css('color', "#000");
+            }
+
+            if (window.settings.bgColor) {
+                $('body').css('background-color', "#fff");
+            }
+
+            if (window.settings.fontSize) {
+                $('body').css('font-size', window.settings.fontSize);
+            }
+        })
+        console.log(window.settings)
+    </script>
+
+
+
+    <script src="connection.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+
+
+    <div class="eventcontainer">
+    </div>
+</body>
+
+</html>
